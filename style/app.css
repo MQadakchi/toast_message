@@ -1,0 +1,118 @@
+:root {
+  --primaryColor: #dabfff;
+  --secondaryColor: #4f518c;
+  --textColor: #907ad6;
+  --lightColor: #7fdeff;
+  --darkColor: #2c2a4a;
+}
+
+@font-face {
+  font-family: "vazir";
+  src: url("/fonts/vazir.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: vazir;
+  font-weight: normal;
+  direction: rtl;
+  text-align: right;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--darkColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--lightColor);
+  border-radius: 25px;
+  box-shadow: 0 0 5px var(--lightColor);
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--secondaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+button {
+  border: 2px solid var(--primaryColor);
+  outline: none;
+  background-color: var(--primaryColor);
+  font-family: vazir;
+  font-size: 1.1rem;
+  color: var(--darkColor);
+  padding: 15px 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
+button:hover {
+  background-color: transparent;
+  color: var(--primaryColor);
+}
+.toast {
+  position: fixed;
+  width: 450px;
+  top: 25px;
+  right: -460px;
+  background-color: var(--lightColor);
+  padding: 25px;
+  box-shadow: 0 0 10px var(--lightColor);
+  color: var(--secondaryColor);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.toast .close {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: pointer;
+}
+.toast.active {
+  animation: toastShow 1s linear forwards;
+}
+@keyframes toastShow {
+  0% {
+    right: -460px;
+  }
+  25% {
+    right: 100px;
+  }
+  50% {
+    right: 0px;
+  }
+  100% {
+    right: 50px;
+  }
+}
+.toast.deactive {
+  animation: toastHide 1s linear forwards;
+}
+@keyframes toastHide {
+  0% {
+    right: 50px;
+  }
+  25% {
+    right: 0px;
+  }
+  50% {
+    right: 100px;
+  }
+  100% {
+    right: -460px;
+  }
+}
